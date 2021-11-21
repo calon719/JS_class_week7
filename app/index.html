@@ -1,0 +1,125 @@
+---
+title: 旅遊套票
+layout: ./app/layout.ejs
+engine: ejs
+current: index
+---
+<section class="max-w-230 text-primary py-15 px-24 mt-30 mb-25 mx-auto rounded-xl shadow grid grid-cols-2 gap-x-4">
+  <div>
+    <img class="mb-5" src="https://i.imgur.com/iRssPpJ.png" alt="">
+    <img src="https://i.imgur.com/vJt0znH.png" alt="">
+  </div>
+  <div>
+
+    <form class="addTicket-form" action="">
+      <h1 class="text-2xl font-bold border-b-3 pb-1 mb-10"><span class="text-xl mx-1"><i
+            class="fas fa-plus-circle"></i></span>新增旅遊套票
+      </h1>
+      <div class="flex">
+        <label class="mt-1 mr-8 font-medium" for="ticketName">套票名稱</label>
+        <div class="flex-grow">
+          <input class="border-b border-primary py-2 px-3 bg-gray-200 w-full" type="text" id="ticketName"
+            data-prop="ticketInput" data-ticketInput="name" placeholder="請填寫套票名稱">
+          <br>
+          <span class="invisible block text-tiny mb-0.5" data-ticketInput="name"><i
+              class="fas fa-exclamation-circle mr-1"></i>必填</span>
+        </div>
+      </div>
+      <div class="flex">
+        <label class="mt-1 mr-8 font-medium" for="ticketImgUrl">圖片網址</label>
+        <div class="flex-grow">
+          <input class="border-b border-primary py-2 px-3 bg-gray-200 w-full" type="text" id="ticketImgUrl"
+            data-prop="ticketInput" data-ticketInput="imgUrl" placeholder="請填寫圖片網址">
+          <br>
+          <span class="invisible block text-tiny mb-0.5" data-ticketInput="imgUrl"><i
+              class="fas fa-exclamation-circle mr-1"></i>必填</span>
+        </div>
+      </div>
+      <div class="flex">
+        <label class=" mt-1 mr-8 font-medium" for="ticketRegion">景點地區</label>
+        <div class="flex-grow">
+          <select class="border-b border-primary py-2 px-3 bg-gray-200 text-gray-500 w-full" id="ticketRegion"
+            data-prop="ticketInput" name="ticketRegion" data-ticketInput="area">
+            <option value="" disabled selected hidden>請選擇景點地區</option>
+            <option value="台北">台北</option>
+            <option value="台中">台中</option>
+            <option value="高雄">高雄</option>
+          </select>
+          <br>
+          <span class="invisible block text-tiny mb-0.5" data-ticketInput="area"><i
+              class="fas fa-exclamation-circle mr-1"></i>必填</span>
+        </div>
+      </div>
+      <div class="flex">
+        <label class="mt-2 mr-8 font-medium" for="ticketPrice">套票金額</label>
+        <div class="flex-grow">
+          <input class="border-b border-primary py-2 px-3 bg-gray-200 w-full" type="number" id="ticketPrice"
+            data-prop="ticketInput" data-ticketInput="price" placeholder="請填寫套票金額">
+          <br>
+          <span class="invisible block text-tiny mb-0.5" data-ticketInput="price"><i
+              class="fas fa-exclamation-circle mr-1"></i>必填</span>
+        </div>
+      </div>
+      <div class="flex">
+        <label class="mt-2 mr-8 font-medium" for="ticketNum">套票組數</label>
+        <div class="flex-grow">
+          <input class="border-b border-primary py-2 px-3 bg-gray-200 w-full" type="number" id="ticketNum"
+            data-prop="ticketInput" data-ticketInput="group" placeholder="請填寫套票組數">
+          <br>
+          <span class="invisible block text-tiny mb-0.5" data-ticketInput="group"><i
+              class="fas fa-exclamation-circle mr-1"></i>必填</span>
+        </div>
+      </div>
+      <div class="flex">
+        <label class="mt-2 mr-8 font-medium" for="ticketRate">套票星級</label>
+        <div class="flex-grow">
+          <input class="border-b border-primary py-2 px-3 bg-gray-200 w-full" type="number" id="ticketRate"
+            data-prop="ticketInput" data-ticketInput="rate" placeholder="請填寫套票星級">
+          <br>
+          <span class="invisible block text-tiny mb-0.5" data-ticketInput="rate"><i
+              class="fas fa-exclamation-circle mr-1"></i>「套票星級」為
+            1 ~ 10
+            分</span>
+        </div>
+      </div>
+      <div class="flex">
+        <label class="mt-2 mr-8 font-medium" for="ticketDescription">套票描述</label>
+        <div class="flex-grow">
+          <textarea class="border-b border-primary py-2 px-3 bg-gray-200 w-full h-28" type="text"
+            data-prop="ticketInput" id="ticketDescription" data-ticketInput="description"
+            placeholder="請填寫套票描述（限 100 字）"></textarea>
+          <br>
+          <span class="invisible block text-tiny mb-0.5" data-ticketInput="description"><i
+              class="fas fa-exclamation-circle mr-1"></i>必填</span>
+          <span class="hidden" data-ticketInput="descriptionNum"><i class="fas fa-exclamation-circle mr-1"></i>字數不可超過
+            100 字</span>
+        </div>
+      </div>
+      <div class="flex justify-end mt-4">
+        <button
+          class="bg-primary rounded-5 text-xl text-white px-10 py-2.5 hover:opacity-70 transition-opacity duration-500"
+          id="addTicketBtn">新增套票</button>
+      </div>
+    </form>
+</section>
+
+<section class="bg-gray-100">
+  <div class="container pt-11 pb-30">
+    <div class="ml-24 flex items-start mb-13">
+      <div class="flex-grow flex items-center pt-3">
+        <select name="" class="searchRegion w-3/12 text-gray-500 bg-white border border-gray-400 rounded px-3 py-2">
+          <option value="" disabled selected hidden>地區搜尋</option>
+          <option value="全部">全部地區</option>
+          <option value="台北">台北</option>
+          <option value="台中">台中</option>
+          <option value="高雄">高雄</option>
+        </select>
+        <p class="text-gray-500 ml-8">本次搜尋共 <span class="searchResultNum">6</span> 筆資料</p>
+      </div>
+      <div class="areaChart ml-auto mr-24"></div>
+    </div>
+
+    <ul class="ticketList grid grid-cols-3 gap-x-8 gap-y-9">
+    </ul>
+  </div>
+</section>
