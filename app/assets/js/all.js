@@ -39,6 +39,7 @@ function checkInput(e) {
       // 檢查 套票描述 字數
       if (item.value === '') {
         inputSpan.setAttribute('class', 'visible block text-tiny text-danger mb-0.5');
+        descriptionSpan.setAttribute('class', 'hidden');
       } else if (item.value.length > 100) {
         inputSpan.setAttribute('class', 'hidden');
         descriptionSpan.setAttribute('class', 'block mb-2 text-tiny text-danger')
