@@ -1,10 +1,39 @@
----
-title: 旅遊套票
-layout: ./app/layout.ejs
-engine: ejs
-current: index
----
-<section class="max-w-230 text-primary py-15 px-24 mt-30 mb-25 mx-auto rounded-xl shadow grid grid-cols-2 gap-x-4">
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title>
+    旅遊套票
+  </title>
+
+  <link rel="stylesheet" href="./assets/style/all.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.18/c3.css" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <style>
+    .areaChart .c3-line-data2 {
+      stroke-width: 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <section class="max-w-230 text-primary py-15 px-24 mt-30 mb-25 mx-auto rounded-xl shadow grid grid-cols-2 gap-x-4">
   <div>
     <img class="mb-5" src="https://i.imgur.com/iRssPpJ.png" alt="">
     <img src="https://i.imgur.com/vJt0znH.png" alt="">
@@ -123,3 +152,9 @@ current: index
     </ul>
   </div>
 </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.4.0/d3.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.18/c3.js"></script>
+    <script src="./assets/js/all.js"></script>
+</body>
+
+</html>
