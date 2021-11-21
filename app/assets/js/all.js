@@ -59,7 +59,7 @@ function checkInput(e) {
   addTicket(checkStatus);
 };
 
-// 新增資料到 物件 data
+// 新增資料到 物件 ticketData
 function addTicket(checkStatus) {
   if (checkStatus) {
     let obj = {};
@@ -126,7 +126,7 @@ function renderData(data) {
 };
 
 
-// 更新甜甜圈圖表
+// 更新 donut chart
 function updateChart(data) {
   areaChartData.splice(0)
   let areaData = [];
