@@ -40,6 +40,7 @@ function checkInput(e) {
       // 檢查 套票描述 字數
       if (item.value === '') {
         inputSpan.setAttribute('class', 'visible block text-tiny text-danger mb-0.5');
+        descriptionSpan.setAttribute('class', 'hidden');
       } else if (item.value.length > 100) {
         inputSpan.setAttribute('class', 'hidden');
         descriptionSpan.setAttribute('class', 'block mb-2 text-tiny text-danger');
@@ -63,7 +64,7 @@ function checkInput(e) {
   addTicket(checkStatus);
 }
 
-; // 新增資料到 物件 data
+; // 新增資料到 物件 ticketData
 
 function addTicket(checkStatus) {
   if (checkStatus) {
@@ -121,7 +122,7 @@ function renderData(data) {
   searchResultNum.textContent = resultNum;
 }
 
-; // 更新甜甜圈圖表
+; // 更新 donut chart
 
 function updateChart(data) {
   areaChartData.splice(0);
