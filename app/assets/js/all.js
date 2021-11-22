@@ -10,7 +10,14 @@ let areaChartData = [];
 
 addTicketBtn.addEventListener('click', checkInput);
 searchAreaInput.addEventListener('change', areaFilter);
-;
+for (let i = 0; i < addTicketInputs.length; i++) {
+  addTicketInputs[i].addEventListener('keydown', function (e) {
+    if (e.keyCode == 13) {
+      e.preventDefault();
+      checkInput();
+    };
+  });
+};
 
 axios.get('https://raw.githubusercontent.com/hexschool/js-training/main/travelApi.json').then(function (response) {
   ticketData = response.data.data;
@@ -21,7 +28,9 @@ axios.get('https://raw.githubusercontent.com/hexschool/js-training/main/travelAp
 });
 
 function checkInput(e) {
-  e.preventDefault();
+  if (e != undefined && e.type == 'click') {
+    e.preventDefault();
+  };
   let checkStatus = true;
 
   addTicketInputs.forEach(function (item) {
