@@ -1,5 +1,6 @@
 "use strict";
 
+var form = document.querySelector('.addTicket-form');
 var addTicketInputs = document.querySelectorAll('[data-prop="ticketInput"]');
 var addTicketBtn = document.querySelector('#addTicketBtn');
 var cardList = document.querySelector('.ticketList');
@@ -7,22 +8,18 @@ var searchAreaInput = document.querySelector('.searchRegion');
 var searchResultNum = document.querySelector('.searchResultNum'); // 資料
 
 var ticketData;
-var areaChartData = [];
+var areaChartData = []; // 事件
+
 addTicketBtn.addEventListener('click', checkInput);
 searchAreaInput.addEventListener('change', areaFilter);
-
-for (var i = 0; i < addTicketInputs.length; i++) {
-  addTicketInputs[i].addEventListener('keydown', function (e) {
+addTicketInputs.forEach(function (item) {
+  item.addEventListener('keydown', function (e) {
     if (e.keyCode == 13) {
       e.preventDefault();
       checkInput();
     }
-
-    ;
   });
-}
-
-;
+});
 axios.get('https://raw.githubusercontent.com/hexschool/js-training/main/travelApi.json').then(function (response) {
   ticketData = response.data.data;
   renderData(ticketData);
@@ -37,73 +34,103 @@ function checkInput(e) {
   }
 
   ;
-  var checkStatus = true;
   addTicketInputs.forEach(function (item) {
-    var inputSpan = document.querySelector("span[data-ticketInput=".concat(item.getAttribute('data-ticketInput'), "]"));
-    var descriptionSpan = document.querySelector("span[data-ticketInput=\"descriptionNum\"]");
-
-    if (item.getAttribute('data-ticketInput') == 'rate') {
-      // 檢查 套票星級
-      if (parseInt(item.value) > 10 || parseInt(item.value) < 1 || item.value === '') {
-        inputSpan.setAttribute('class', 'block mt-1 mb-2 text-tiny text-danger');
-        checkStatus = false;
-      } else {
-        inputSpan.setAttribute('class', 'invisible block mb-2 text-tiny text-danger');
-      }
-
-      ;
-    } else if (item.getAttribute('data-ticketInput') === 'description') {
-      // 檢查 套票描述 字數
-      if (item.value === '') {
-        inputSpan.setAttribute('class', 'visible block text-tiny text-danger mb-0.5');
-        descriptionSpan.setAttribute('class', 'hidden');
-      } else if (item.value.length > 100) {
-        inputSpan.setAttribute('class', 'hidden');
-        descriptionSpan.setAttribute('class', 'block mb-2 text-tiny text-danger');
-        checkStatus = false;
-      } else {
-        descriptionSpan.setAttribute('class', 'hidden');
-        inputSpan.setAttribute('class', 'invisible block text-tiny mb-0.5');
-      }
-
-      ;
-    } else if (item.value === '') {
-      // 檢查空值
-      inputSpan.setAttribute('class', 'block mt-1 mb-2 text-tiny text-danger');
-      checkStatus = false;
-    } else {
-      inputSpan.setAttribute('class', 'invisible block text-tiny mb-0.5');
-    }
-
-    ;
+    item.nextElementSibling.setAttribute('class', 'invisible block text-danger text-tiny mb-0.5');
   });
-  addTicket(checkStatus);
+  var constraints = {
+    name: {
+      presence: {
+        message: '^必填'
+      }
+    },
+    imgUrl: {
+      presence: {
+        message: '^必填'
+      },
+      url: {
+        schemes: ['http', 'https'],
+        message: '^不是正確的網址'
+      }
+    },
+    area: {
+      presence: {
+        message: '^必填'
+      }
+    },
+    price: {
+      presence: {
+        message: '^必填'
+      },
+      numericality: {
+        greaterThan: 0,
+        message: '^金額必須大於 0'
+      }
+    },
+    group: {
+      presence: {
+        message: '^必填'
+      },
+      numericality: {
+        greaterThan: 0,
+        message: '^數量必須大於 0'
+      }
+    },
+    rate: {
+      presence: {
+        message: '^必填'
+      },
+      numericality: {
+        greaterThan: 0,
+        lessThanOrEqualTo: 10,
+        message: '^星級為 1 - 10 分'
+      }
+    },
+    description: {
+      presence: {
+        message: '^必填'
+      },
+      length: {
+        maximum: 100,
+        message: '^字數不可以超過 100 字'
+      }
+    }
+  };
+  var errors = validate(form, constraints);
+
+  if (errors) {
+    Object.keys(errors).forEach(function (key) {
+      var el = document.querySelector("[data-ticketInput=\"".concat(key, "\"]"));
+      var classToggle = el.getAttribute('data-class-toggle');
+      el.classList.toggle(classToggle);
+      el.innerHTML = "<i class=\"fas fa-exclamation-circle mr-1\"></i>".concat(errors[key]);
+    });
+  } else {
+    addTicket();
+  }
+
+  ;
 }
 
 ; // 新增資料到 物件 ticketData
 
-function addTicket(checkStatus) {
-  if (checkStatus) {
-    var obj = {};
-    addTicketInputs.forEach(function (item) {
-      obj.id = ticketData.length;
+function addTicket() {
+  var obj = {};
+  addTicketInputs.forEach(function (item) {
+    obj.id = ticketData.length;
 
-      if (item.getAttribute('type') === 'number') {
-        obj[item.getAttribute('data-ticketInput')] = parseInt(item.value);
-      } else {
-        obj[item.getAttribute('data-ticketInput')] = item.value;
-      }
+    if (item.getAttribute('type') === 'number') {
+      obj[item.getAttribute('name')] = parseInt(item.value);
+    } else {
+      obj[item.getAttribute('name')] = item.value;
+    }
 
-      ;
-      item.value = '';
-    });
-    ticketData.push(obj);
-    areaFilter(); // 更新畫面
+    ;
+    item.value = '';
+  });
+  ticketData.push(obj);
+  areaFilter(); // 更新畫面
 
-    updateChart(ticketData); // 更新圖表
-  } else {
-    return;
-  }
+  updateChart(ticketData); // 更新圖表
 }
 
 ; // 篩選資料

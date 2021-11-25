@@ -48,80 +48,66 @@
         <label class="mt-1 mr-8 font-medium" for="ticketName">套票名稱</label>
         <div class="flex-grow">
           <input class="border-b border-primary py-2 px-3 bg-gray-200 w-full" type="text" id="ticketName"
-            data-prop="ticketInput" data-ticketInput="name" placeholder="請填寫套票名稱">
-          <br>
-          <span class="invisible block text-tiny mb-0.5" data-ticketInput="name"><i
-              class="fas fa-exclamation-circle mr-1"></i>必填</span>
+            data-prop="ticketInput" name="name" placeholder="請填寫套票名稱">
+          <p class="invisible text-danger text-tiny mb-0.5" data-class-toggle="invisible" data-ticketInput="name">必填</p>
         </div>
       </div>
       <div class="flex">
         <label class="mt-1 mr-8 font-medium" for="ticketImgUrl">圖片網址</label>
         <div class="flex-grow">
           <input class="border-b border-primary py-2 px-3 bg-gray-200 w-full" type="text" id="ticketImgUrl"
-            data-prop="ticketInput" data-ticketInput="imgUrl" placeholder="請填寫圖片網址">
-          <br>
-          <span class="invisible block text-tiny mb-0.5" data-ticketInput="imgUrl"><i
-              class="fas fa-exclamation-circle mr-1"></i>必填</span>
+            data-prop="ticketInput" name="imgUrl" placeholder="請填寫圖片網址">
+          <p class="invisible text-danger text-tiny mb-0.5" data-class-toggle="invisible" data-ticketInput="imgUrl">必填
+          </p>
         </div>
       </div>
       <div class="flex">
         <label class=" mt-1 mr-8 font-medium" for="ticketRegion">景點地區</label>
         <div class="flex-grow">
           <select class="border-b border-primary py-2 px-3 bg-gray-200 text-gray-500 w-full" id="ticketRegion"
-            data-prop="ticketInput" name="ticketRegion" data-ticketInput="area">
+            data-prop="ticketInput" name="area">
             <option value="" disabled selected hidden>請選擇景點地區</option>
             <option value="台北">台北</option>
             <option value="台中">台中</option>
             <option value="高雄">高雄</option>
           </select>
-          <br>
-          <span class="invisible block text-tiny mb-0.5" data-ticketInput="area"><i
-              class="fas fa-exclamation-circle mr-1"></i>必填</span>
+          <p class="invisible text-danger text-tiny mb-0.5" data-class-toggle="invisible" data-ticketInput="area">必填</p>
         </div>
       </div>
       <div class="flex">
         <label class="mt-2 mr-8 font-medium" for="ticketPrice">套票金額</label>
         <div class="flex-grow">
           <input class="border-b border-primary py-2 px-3 bg-gray-200 w-full" type="number" id="ticketPrice"
-            data-prop="ticketInput" data-ticketInput="price" placeholder="請填寫套票金額">
-          <br>
-          <span class="invisible block text-tiny mb-0.5" data-ticketInput="price"><i
-              class="fas fa-exclamation-circle mr-1"></i>必填</span>
+            data-prop="ticketInput" name="price" placeholder="請填寫套票金額">
+          <p class="invisible text-danger text-tiny mb-0.5" data-class-toggle="invisible" data-ticketInput="price">必填
+          </p>
         </div>
       </div>
       <div class="flex">
         <label class="mt-2 mr-8 font-medium" for="ticketNum">套票組數</label>
         <div class="flex-grow">
           <input class="border-b border-primary py-2 px-3 bg-gray-200 w-full" type="number" id="ticketNum"
-            data-prop="ticketInput" data-ticketInput="group" placeholder="請填寫套票組數">
-          <br>
-          <span class="invisible block text-tiny mb-0.5" data-ticketInput="group"><i
-              class="fas fa-exclamation-circle mr-1"></i>必填</span>
+            data-prop="ticketInput" name="group" placeholder="請填寫套票組數">
+          <p class="invisible text-danger text-tiny mb-0.5" data-class-toggle="invisible" data-ticketInput="group">必填
+          </p>
         </div>
       </div>
       <div class="flex">
         <label class="mt-2 mr-8 font-medium" for="ticketRate">套票星級</label>
         <div class="flex-grow">
           <input class="border-b border-primary py-2 px-3 bg-gray-200 w-full" type="number" id="ticketRate"
-            data-prop="ticketInput" data-ticketInput="rate" placeholder="請填寫套票星級">
-          <br>
-          <span class="invisible block text-tiny mb-0.5" data-ticketInput="rate"><i
-              class="fas fa-exclamation-circle mr-1"></i>「套票星級」為
-            1 ~ 10
-            分</span>
+            data-prop="ticketInput" name="rate" placeholder="請填寫套票星級">
+          <p class="invisible text-danger text-tiny mb-0.5" data-class-toggle="invisible" data-ticketInput="rate">必填</p>
         </div>
       </div>
       <div class="flex">
         <label class="mt-2 mr-8 font-medium" for="ticketDescription">套票描述</label>
         <div class="flex-grow">
           <textarea class="border-b border-primary py-2 px-3 bg-gray-200 w-full h-28" type="text"
-            data-prop="ticketInput" id="ticketDescription" data-ticketInput="description"
-            placeholder="請填寫套票描述（限 100 字）"></textarea>
-          <br>
-          <span class="invisible block text-tiny mb-0.5" data-ticketInput="description"><i
-              class="fas fa-exclamation-circle mr-1"></i>必填</span>
-          <span class="hidden" data-ticketInput="descriptionNum"><i class="fas fa-exclamation-circle mr-1"></i>字數不可超過
-            100 字</span>
+            data-prop="ticketInput" id="ticketDescription" name="description" placeholder="請填寫套票描述（限 100 字）"></textarea>
+          <p class="invisible text-danger text-tiny mb-0.5" data-class-toggle="invisible"
+            data-ticketInput="description">必填
+          </p>
         </div>
       </div>
       <div class="flex justify-end mt-4">
@@ -154,6 +140,7 @@
 </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.4.0/d3.min.js" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.18/c3.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
     <script src="./assets/js/all.js"></script>
 </body>
 
