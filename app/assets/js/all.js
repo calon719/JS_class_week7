@@ -36,7 +36,7 @@ function checkInput(e) {
   };
 
   addTicketInputs.forEach(function (item) {
-    item.nextElementSibling.setAttribute('class', 'invisible block text-danger text-tiny mb-0.5');
+    item.nextElementSibling.setAttribute('class', 'invisible text-danger text-tiny mb-0.5');
   });
 
   let constraints = {
