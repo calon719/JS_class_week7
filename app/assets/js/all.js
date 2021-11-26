@@ -127,6 +127,7 @@ function addTicket() {
     item.value = '';
   });
   ticketData.push(obj);
+  searchAreaInput.value = '全部';
   areaFilter(); // 更新畫面
   updateChart(ticketData); // 更新圖表
 };
