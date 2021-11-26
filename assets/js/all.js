@@ -35,7 +35,7 @@ function checkInput(e) {
 
   ;
   addTicketInputs.forEach(function (item) {
-    item.nextElementSibling.setAttribute('class', 'invisible block text-danger text-tiny mb-0.5');
+    item.nextElementSibling.setAttribute('class', 'invisible text-danger text-tiny mb-0.5');
   });
   var constraints = {
     name: {
@@ -128,6 +128,7 @@ function addTicket() {
     item.value = '';
   });
   ticketData.push(obj);
+  searchAreaInput.value = '全部';
   areaFilter(); // 更新畫面
 
   updateChart(ticketData); // 更新圖表
