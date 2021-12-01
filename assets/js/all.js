@@ -7,8 +7,7 @@ var cardList = document.querySelector('.ticketList');
 var searchAreaInput = document.querySelector('.searchRegion');
 var searchResultNum = document.querySelector('.searchResultNum'); // 資料
 
-var ticketData;
-var areaChartData = []; // 事件
+var ticketData; // 事件
 
 addTicketBtn.addEventListener('click', checkInput);
 searchAreaInput.addEventListener('change', areaFilter);
@@ -169,7 +168,7 @@ function renderData(data) {
 ; // 更新 donut chart
 
 function updateChart(data) {
-  areaChartData.splice(0);
+  var areaChartData = [];
   var areaData = [];
   data.forEach(function (item) {
     var obj = {};
