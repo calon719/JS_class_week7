@@ -7,7 +7,6 @@ const searchResultNum = document.querySelector('.searchResultNum');
 
 // 資料
 let ticketData;
-let areaChartData = [];
 
 // 事件
 addTicketBtn.addEventListener('click', checkInput);
@@ -179,7 +178,7 @@ function renderData(data) {
 
 // 更新 donut chart
 function updateChart(data) {
-  areaChartData.splice(0)
+  let areaChartData = [];
   let areaData = [];
 
   data.forEach(function (item) {
